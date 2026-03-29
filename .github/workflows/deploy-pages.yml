@@ -25,14 +25,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: '4.0.1'
+
+      - name: Install dependencies and build
         run: npm ci
 
       - name: Build Vue demo
-        run: npm run build:aga8-vue
-        working-directory: ./src/aga8-vue
+        run: |
+          cd src/aga8-vue
+          npm install
+          npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
