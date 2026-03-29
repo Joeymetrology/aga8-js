@@ -4,6 +4,7 @@ import { githubPagesSpa } from "@sctg/vite-plugin-github-pages-spa";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/aga8-js/',
   plugins: [vue(), githubPagesSpa()],
   optimizeDeps: {
     exclude: ['@sctg/aga8-js']
